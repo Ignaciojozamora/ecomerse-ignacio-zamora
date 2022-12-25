@@ -1,10 +1,10 @@
-
+import "./itemlistcontainer.css"
 
 const ItemListContainer = (props) => {
     const greeting = props.greeting
     return (
         
-        <div>{greeting}</div>
+        <div className="itemlistcontainer">{greeting}</div>
 );
 };
 

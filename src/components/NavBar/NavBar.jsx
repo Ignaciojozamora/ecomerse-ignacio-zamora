@@ -1,10 +1,11 @@
 import "./navbar.css"
+import CartWidget from '../CartWidget/CartWidget'
 
 
 
 function NavBar () {
     return(
-        <nav className="flex">
+        <nav className="flex navbar">
             <div className="nombretienda">
                 <p>Tienda de Bebidas</p>
             </div>
@@ -24,6 +25,7 @@ function NavBar () {
             </li>
             
         </ul>
+        <CartWidget/>
         </nav>
     )
 }
