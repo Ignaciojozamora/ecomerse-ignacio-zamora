@@ -1,0 +1,19 @@
+ul li {
+    list-style: none;
+    margin: 10px;
+    margin-bottom: 0px;
+
+}
+
+a {
+    text-decoration: none;
+    font-size: larger;
+}
+
+.nombretienda{
+    display: flex;
+    justify-content: flex-start;
+    font-size: xx-large;
+    margin: 20px;
+}
+
