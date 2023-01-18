@@ -7,26 +7,23 @@ import { useParams } from "react-router-dom";
 function ItemListContainer() {
     const [products, setProducts] = useState([]);
 
-    let { idcategory } = useParams();
-    console.log (idcategory)
+    let {categoryid} = useParams();
+    console.log (categoryid)
 
     useEffect(() => {
-        if (idcategory !== undefined) {
-            getItemsByCategory(idcategory).then((respuesta) => {
+        if (categoryid !== undefined) {
+            getItemsByCategory(categoryid).then((respuesta) => {
             setProducts(respuesta);
             console.log("esto es por categoria");
-          });
+        });
         } else {
-          getItems().then((respuesta) => {
+        getItems().then((respuesta) => {
             setProducts(respuesta);
             console.log("esto es por item id");
             
-          });
+        });
         }
-      }, []);
-
-
-
+    }, [categoryid]);
 
 
 return (

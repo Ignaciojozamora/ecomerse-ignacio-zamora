@@ -319,8 +319,8 @@ const databaseItems = [
 
 
   /* Funcion para filtrar por CATEGORIA */
-  export function getItemsByCategory(idcategory) {
-    let itemsCat = databaseItems.filter((item) => item.category === idcategory);
+  export function getItemsByCategory(categoryid) {
+    let itemsCat = databaseItems.filter((item) => item.category === categoryid);
   
     return new Promise((resolve, reject) => {
       setTimeout(() => {
