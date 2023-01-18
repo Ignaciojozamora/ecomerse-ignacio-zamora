@@ -312,7 +312,7 @@ const databaseItems = [
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         if (itemReq !== undefined) resolve(itemReq);
-        else reject("Item no encontrado en la base de datos.");
+        else reject("Producto no encontrado en la base de datos.");
       }, 2000);
     });
   }

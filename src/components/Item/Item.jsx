@@ -2,8 +2,10 @@ import React from "react";
 import "./item.css";
 import { ButtonChild } from "../../components/Button/Button";
 import ToggleButton from "../ToggleButton/TogleButton";
+import { Link } from "react-router-dom";
 
 function Item({ id, title, price, detail, imgurl }) {
+  const urlDetail = `/item/${id}`;
 
 
   return (
@@ -21,8 +23,9 @@ function Item({ id, title, price, detail, imgurl }) {
           <h4>$ {price}</h4>
           <small>{detail}</small>
         </div>
-
+        <Link to={urlDetail}>
         <ButtonChild>Ver detalle</ButtonChild>
+        </Link>
       </div>
     
   );
