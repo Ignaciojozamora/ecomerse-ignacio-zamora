@@ -1,6 +1,5 @@
 import "./itemlistcontainer.css"
 import React, { useState, useEffect } from "react";
-import Item from "../Item/Item";
 import getItems, { getItemsByCategory } from "../../services/mockAsyncServices";
 import ItemList from "../ItemList/ItemList";
 import { useParams } from "react-router-dom";
@@ -8,18 +7,20 @@ import { useParams } from "react-router-dom";
 function ItemListContainer() {
     const [products, setProducts] = useState([]);
 
-    let { categoryid } = useParams();
-    console.log (categoryid)
+    let { idcategory } = useParams();
+    console.log (idcategory)
 
     useEffect(() => {
-        if (categoryid) {
-          getItems(categoryid).then((respuesta) => {
+        if (idcategory !== undefined) {
+            getItemsByCategory(idcategory).then((respuesta) => {
             setProducts(respuesta);
+            console.log("esto es por categoria");
           });
         } else {
           getItems().then((respuesta) => {
-            console.log(respuesta);
             setProducts(respuesta);
+            console.log("esto es por item id");
+            
           });
         }
       }, []);
@@ -27,25 +28,7 @@ function ItemListContainer() {
 
 
 
-      /* async function getProducts() {
-    if (!idcategory) {
-    try {
-        let response = await getItems();
-        setProducts(response);
-    } 
-    catch (error) {
-        alert(error);
-    }
-    } else {
-    let response = await getItemsByCategory(idcategory);
-    setProducts(response);
-    }
-}
 
-useEffect(() => {
-    getProducts();
-}, []);
- */
 return (
     <>
     <div className="itemlistcontainer">
