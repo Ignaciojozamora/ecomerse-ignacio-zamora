@@ -11,10 +11,10 @@ function ItemDetail() {
   let { itemid } = useParams();
 
 /* Funcion para agragar al carrito */
-function handleAddToCart(){
+function handleAddToCart(count){
 
 /* validar count 0 no agregar */
-    alert(`Agregaste ${product.title} al carrito`);
+    alert(`Agregaste ${count} ${product.title} al carrito`);
 }
 
 
@@ -38,7 +38,7 @@ useEffect(() => {
         <h2 className="priceTag">$ {product.price}</h2>
         <small>{product.detail}</small>
     </div>
-    <ItemCount onTouch={handleAddToCart}/>
+    <ItemCount onAddToCart={handleAddToCart}/>
     <ButtonChild >Ir al carrito</ButtonChild>
     </div>
     );

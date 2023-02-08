@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ButtonChild } from "../Button/Button";
 import "./itemcount.css";
 
-function ItemCount( props ) {
+function ItemCount( {onAddToCart}) {
   const [count, setCount] = useState(0);
 
   function handleAdd() {
@@ -31,7 +31,7 @@ function ItemCount( props ) {
       </div>
 
       <div className="itemcount_btns">
-        <ButtonChild onTouch={props.onTouch}>
+        <ButtonChild onTouch={()=>onAddToCart(count)}>
           Agregar al carrito
         </ButtonChild>
       </div>
