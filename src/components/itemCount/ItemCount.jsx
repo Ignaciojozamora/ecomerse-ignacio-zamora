@@ -21,17 +21,17 @@ function ItemCount( props ) {
     <div className="itemcount_container">
       <small>Agrega la cantidad de procutos a comrpar</small>
       <div className="itemcount_control">
-        <ButtonChild onClick={handleSubstract}>
+        <ButtonChild onTouch={handleSubstract}>
           -
         </ButtonChild>
         <span className="itemcount_count">{count}</span>
-        <ButtonChild  onClick={handleAdd}>
+        <ButtonChild  onTouch={handleAdd}>
           +
         </ButtonChild>
       </div>
 
       <div className="itemcount_btns">
-        <ButtonChild onClick={props.onClick}>
+        <ButtonChild onTouch={props.onTouch}>
           Agregar al carrito
         </ButtonChild>
       </div>

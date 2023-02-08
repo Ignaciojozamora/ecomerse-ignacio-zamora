@@ -38,7 +38,7 @@ useEffect(() => {
         <h2 className="priceTag">$ {product.price}</h2>
         <small>{product.detail}</small>
     </div>
-    <ItemCount onClick={handleAddToCart}/>
+    <ItemCount onTouch={handleAddToCart}/>
     <ButtonChild >Ir al carrito</ButtonChild>
     </div>
     );

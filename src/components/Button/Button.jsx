@@ -17,7 +17,7 @@ export function ButtonChild(props) {
 
   return (
     <button 
-    onClick={props.onClick}
+    onClick={props.onTouch}
     className= "btn"
     >
       {props.children}
