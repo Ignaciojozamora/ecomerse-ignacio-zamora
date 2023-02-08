@@ -16,7 +16,10 @@ export function ButtonChild(props) {
 
 
   return (
-    <button style={{ backgroundColor: props.color }} className= "btn">
+    <button 
+    onClick={props.onClick}
+    className= "btn"
+    >
       {props.children}
     </button>
   );
