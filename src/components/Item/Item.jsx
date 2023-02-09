@@ -16,7 +16,9 @@ function Item({ id, title, price, detail, imgurl }) {
           <h2>{title}</h2>
         </div>
         <div className="item-card_img">
+        <Link to={urlDetail}>
           <img src={imgurl} alt="imagen"></img>
+          </Link>
         </div>
 
         <div className="item-card_detail">

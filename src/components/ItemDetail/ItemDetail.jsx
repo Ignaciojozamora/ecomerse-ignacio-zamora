@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { useContext } from "react";
 import { useParams } from "react-router-dom";
 import { getSingleItem } from "../../services/mockAsyncServices"
+import { cartContext } from "../../storage/cartContext";
 import { ButtonChild } from "../Button/Button";
 import ItemCount from "../itemCount/ItemCount";
 import "./itemdetail.css";
@@ -8,7 +10,8 @@ import "./itemdetail.css";
 
 function ItemDetail() {
   const [product, setProduct] = useState([]);
-  let { itemid } = useParams();
+  let {itemid} = useParams();
+  const {cart} = useContext(cartContext);
 
 /* Funcion para agragar al carrito */
 function handleAddToCart(count){
@@ -25,7 +28,7 @@ useEffect(() => {
         setProduct(respuesta);
         })
         .catch((error) => alert(`Error: ${error}`));
-    }, []);
+    }, [itemid]);
 
     return (
     
@@ -39,7 +42,7 @@ useEffect(() => {
         <small>{product.detail}</small>
     </div>
     <ItemCount onAddToCart={handleAddToCart}/>
-    <ButtonChild >Ir al carrito</ButtonChild>
+    <ButtonChild>Ir al carrito</ButtonChild>
     </div>
     );
 }
