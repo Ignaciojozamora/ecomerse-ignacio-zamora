@@ -8,16 +8,24 @@ import ItemCount from "../itemCount/ItemCount";
 import "./itemdetail.css";
 
 
+
 function ItemDetail() {
-  const [product, setProduct] = useState([]);
-  let {itemid} = useParams();
-  const {cart} = useContext(cartContext);
+    const [product, setProduct] = useState([]);
+    let {itemid} = useParams();
+    const {addItem} = useContext(cartContext);
 
 /* Funcion para agragar al carrito */
 function handleAddToCart(count){
-
+    if (count > 0) {
+        
+    product.quantity = count
+    addItem(product, count)
+    }
+    else {
+        alert("no podes agregar 0 productos")
+    }
 /* validar count 0 no agregar */
-    alert(`Agregaste ${count} ${product.title} al carrito`);
+
 }
 
 
