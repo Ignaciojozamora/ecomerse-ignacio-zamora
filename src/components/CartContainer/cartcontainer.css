@@ -30,3 +30,7 @@
   .total{
     color: black;
   }
+.centrar {
+  display: flex;
+  justify-content: center;
+}

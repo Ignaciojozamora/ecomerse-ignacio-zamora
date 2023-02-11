@@ -2,12 +2,12 @@ import { useState } from "react";
 import { ButtonChild } from "../Button/Button";
 import "./itemcount.css";
 
-function ItemCount( {onAddToCart}) {
+function ItemCount( {onAddToCart, stock}) {
   const [count, setCount] = useState(0);
 
   function handleAdd() {
-    // Agregar validación de stock
-    setCount(count + 1);
+    if(count < stock)
+      setCount(count + 1);
   }
 
   function handleSubstract() {

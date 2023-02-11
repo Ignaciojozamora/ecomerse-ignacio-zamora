@@ -16,8 +16,14 @@ function ItemDetail() {
     const [isLoading, setIsLoading] = useState(true);
     const [isInCart, setIsInCart] = useState(false)
     let {itemid} = useParams();
-    const {addItem} = useContext(cartContext);
-
+    const {addItem, cart} = useContext(cartContext);
+    const itemInCart = cart.find(item => item.id===product.id)
+    let stockUpdated; 
+    if (itemInCart){
+    stockUpdated = product.stock - itemInCart.quantity}
+    else {
+        stockUpdated = product.stock 
+    }
 /* Funcion para agragar al carrito */
 function handleAddToCart(count){
     if (count > 0) {
@@ -60,7 +66,7 @@ useEffect(() => {
         </div>
 
     {!isInCart ? (
-    <ItemCount onAddToCart={handleAddToCart}/>
+    <ItemCount stock={stockUpdated} onAddToCart={handleAddToCart}/>
     ) : (
 
     <Link to="/cart">

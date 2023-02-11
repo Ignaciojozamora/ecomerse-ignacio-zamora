@@ -1,6 +1,6 @@
 import React from 'react'
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { createBuyOrder } from '../../services/firebase';
 import { cartContext } from '../../storage/cartContext';
 import { ButtonChild } from '../Button/Button';
@@ -12,29 +12,32 @@ import "./cartcontainer.css"
 function CartContainer(){
     const { cart, removeFromCart, getTotalPriceInCart, getTotalPriceItem } = useContext(cartContext)
 
+    const navigateTo = useNavigate();
+
     async function handleCheckout(evt) {
         const items = cart.map((product) => ({
           id: product.id,
           title: product.title,
           price: product.price,
-          count: product.count,
+          count: product.quantity,
         }));
-    
+        
         //1. modelo de orden de compra
         const order = {
           buyer: {
-            name: "Santiago",
-            email: "s@s.com",
-            phone: 123456,
+            name: "frragoraooirehñgaerñgn",
+            email: "s@aergaergaergs.com",
+            phone: "asd",
           },
           items: items,
           date: new Date(),
           total: 1000,
         };
-    
+        
         //2. Enviarla a firebase.js
         let id = await createBuyOrder(order);
-        console.log(id);
+        
+        navigateTo(`/thank-you/${id}`)
     }
 
 
@@ -81,7 +84,7 @@ function CartContainer(){
         return (
             <div>
                 
-            <h1 className='cart-text'>No tenes nada agregado a tu carrito</h1>
+            <h1 className='centrar'>No tenes nada agregado a tu carrito</h1>
             <FlexWrapper>
             <Link to="/">
             <button className="btn">Volver Al Inicio</button>
