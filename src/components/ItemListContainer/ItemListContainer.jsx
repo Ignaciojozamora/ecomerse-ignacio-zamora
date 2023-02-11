@@ -1,6 +1,7 @@
 import "./itemlistcontainer.css"
 import React, { useState, useEffect } from "react";
-import getItems, { getItemsByCategory } from "../../services/mockAsyncServices";
+import { getItemsByCategory } from "../../services/firebase";
+import {getItems} from "../../services/firebase";
 import ItemList from "../ItemList/ItemList";
 import { useParams } from "react-router-dom";
 import Loader from "../Loader/Loader";
@@ -10,7 +11,6 @@ function ItemListContainer() {
     const [products, setProducts] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     let {categoryid} = useParams();
-    console.log (categoryid)
 
     useEffect(() => {
         if (categoryid !== undefined) {

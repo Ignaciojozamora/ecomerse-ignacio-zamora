@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useContext } from "react";
 import { useParams } from "react-router-dom";
-import { getSingleItem } from "../../services/mockAsyncServices"
+import { getSingleItem } from "../../services/firebase"
 import { cartContext } from "../../storage/cartContext";
 import { ButtonChild } from "../Button/Button";
 import { Link } from "react-router-dom";

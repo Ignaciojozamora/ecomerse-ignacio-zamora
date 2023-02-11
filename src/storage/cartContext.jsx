@@ -26,6 +26,7 @@ function clearCart(){
 /* eliminar un producto */
 const removeFromCart = (productId) => {
     setCart(cart.filter((item) => item.id !== productId));
+    console.log(productId);
   };
 
 /* items totales para el widget */
@@ -33,12 +34,20 @@ const getTotalItems = () => {
     return cart.reduce((total, item) => total + item.quantity, 0);
 };
 
-/* calcular precio total */
+/* precio de items por cantidad */
+const getTotalPriceItem = (item) => {
+    const totalPrice = item.quantity * item.price;
+    return totalPrice
+  }
+
+/* calcular precio total  */
 const getTotalPriceInCart = () => {
     return cart.reduce((total, item) => total + (item.quantity * item.price), 0);
   };
 
-const value = {cart, addItem, getTotalItems, clearCart, removeFromCart, getTotalPriceInCart}
+
+
+const value = {cart, addItem, getTotalItems, clearCart, removeFromCart, getTotalPriceInCart, getTotalPriceItem}
     return (
         <cartContext.Provider value={ value }>
         {props.children}
