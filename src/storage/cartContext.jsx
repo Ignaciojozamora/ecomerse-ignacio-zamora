@@ -18,16 +18,27 @@ function addItem(product, count) {
     }
 
 }
-/* eliminar un producto */
+/* eliminar carrito */
 function clearCart(){
     setCart([])
 }
 
+/* eliminar un producto */
+const removeFromCart = (productId) => {
+    setCart(cart.filter((item) => item.id !== productId));
+  };
+
+/* items totales para el widget */
 const getTotalItems = () => {
     return cart.reduce((total, item) => total + item.quantity, 0);
 };
 
-const value = {cart, addItem, getTotalItems, clearCart}
+/* calcular precio total */
+const getTotalPriceInCart = () => {
+    return cart.reduce((total, item) => total + (item.quantity * item.price), 0);
+  };
+
+const value = {cart, addItem, getTotalItems, clearCart, removeFromCart, getTotalPriceInCart}
     return (
         <cartContext.Provider value={ value }>
         {props.children}
