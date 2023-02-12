@@ -33,7 +33,7 @@ function CartContainer(){
         console.log(order);
         //2. Enviarla a firebase.js
         let id = await createBuyOrder(order);
-        
+        console.log(order);
         navigateTo(`/thank-you/${id}`)
         clearCart()
     }
