@@ -6,38 +6,36 @@ import { cartContext } from '../../storage/cartContext';
 import { ButtonChild } from '../Button/Button';
 import FlexWrapper from '../flexWrapper/FlexWrapper';
 import "./cartcontainer.css"
+import CartForm from "./CartForm";
 
 
 
 function CartContainer(){
-    const { cart, removeFromCart, getTotalPriceInCart, getTotalPriceItem } = useContext(cartContext)
+    const { cart, removeFromCart, getTotalPriceInCart, getTotalPriceItem, clearCart} = useContext(cartContext)
 
     const navigateTo = useNavigate();
 
-    async function handleCheckout(evt) {
+    async function handleCheckout(userData) {
         const items = cart.map((product) => ({
-          id: product.id,
-          title: product.title,
-          price: product.price,
-          count: product.quantity,
+            id: product.id,
+            title: product.title,
+            price: product.price,
+            count: product.quantity,
         }));
         
         //1. modelo de orden de compra
         const order = {
-          buyer: {
-            name: "frragoraooirehñgaerñgn",
-            email: "s@aergaergaergs.com",
-            phone: "asd",
-          },
-          items: items,
-          date: new Date(),
-          total: 1000,
+            buyer: userData,
+            items: items,
+            date: new Date(),
+            total: 1000,
         };
-        
+        console.log(order);
         //2. Enviarla a firebase.js
         let id = await createBuyOrder(order);
         
         navigateTo(`/thank-you/${id}`)
+        clearCart()
     }
 
 
@@ -76,8 +74,8 @@ function CartContainer(){
         </table>
         <div className="cartList_detail">
         <h4>El total de tu compra es de $ {getTotalPriceInCart()}</h4>
+        <CartForm onSubmit={handleCheckout}></CartForm>
         </div>
-        <button className='btn' onClick={handleCheckout}>Finalizar Compra</button>
         </div>
     )}
     else {
@@ -94,5 +92,7 @@ function CartContainer(){
         )
     }
 }
+
+
 
 export default CartContainer;
