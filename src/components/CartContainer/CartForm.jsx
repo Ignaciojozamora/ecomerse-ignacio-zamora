@@ -32,7 +32,8 @@ export default function CartForm(props) {
     setUserData(newState);
     }
 
-    function clearData() {
+    function clearData(evt) {
+        evt.preventDefault();
     setUserData({
         name: "",
         email: "",
