@@ -54,8 +54,8 @@ export default function CartForm(props) {
         <InputForm
             key={field}
             name={field}
-            value={userData[field]}
-            onInputChange={onInputChange}
+            vonInputalue={userData[field]}
+            Change={onInputChange}
             label={field}
         />
         ))}

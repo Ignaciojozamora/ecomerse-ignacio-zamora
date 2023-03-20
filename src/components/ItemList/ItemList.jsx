@@ -13,6 +13,7 @@ function ItemList(props) {
                 price={item.price}
                 detail={item.detail}
                 imgurl={item.imgurl} 
+                dicount={item.discount}
             />
             ))}
 </div>
